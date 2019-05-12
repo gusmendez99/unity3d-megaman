@@ -64,11 +64,13 @@ public class PlayerScript : MonoBehaviour {
             {
                 Time.timeScale = 0.0f;
                 GameObject.Find("EndText").GetComponent<Text>().text = "You lost!";
+                Destroy(this.gameObject);
             }
 
         }
-        else if(col.tag == "Enemy")
+        else if(col.tag == "Shield")
         {
+            Destroy(col.gameObject);
             GameScript.Instance.userHasPowerUp = true;
         }
     }

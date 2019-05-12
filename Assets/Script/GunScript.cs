@@ -8,8 +8,6 @@ public class GunScript : MonoBehaviour {
 	public GameObject sensorRotation;
 
 	void Update () {
-		// Fire1 - Left control
-		// Jump - Spacebar
 		if (Input.GetButtonDown ("Jump")) {
 			Instantiate (firePrefab, transform.position, transform.rotation);
 		}

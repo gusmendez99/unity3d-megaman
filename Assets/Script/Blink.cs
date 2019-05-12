@@ -23,7 +23,7 @@ public class Blink : MonoBehaviour {
 
 		// Press enter
 		if (Input.GetKeyDown (KeyCode.Return)) {
-			SceneManager.LoadScene ("game-scene");
+			SceneManager.LoadScene ("GameScene");
 		}
 
 

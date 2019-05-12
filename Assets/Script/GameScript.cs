@@ -36,6 +36,17 @@ public class GameScript : MonoBehaviour
             currPlayer = Instantiate(player, new Vector2(-1.67f, -0.906f), Quaternion.identity);
 
         }
+        
+
+        
+    }
+
+    void Update(){
+        //Press ESC to exit
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     public void RestartPlayer()
