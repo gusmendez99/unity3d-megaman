@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Diagnostics;
 using System.Security.Cryptography;
+using UnityEngine.UI;
 
 public class EnemyScript : MonoBehaviour {
 
@@ -24,8 +25,8 @@ public class EnemyScript : MonoBehaviour {
 			if (life <= 0) {
 				//Player has won
 				Destroy (gameObject);
-				GameObject.Find("EndText").GetComponent<Text>().text = "You won!!!";
-				GameController.Instance.userHasWon = true;
+				GameObject.Find("EndText").GetComponent<Text>().text = "You won!";
+				GameScript.Instance.userHasWon = true;
 			}
 		}
 	}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour {
 
@@ -8,7 +9,6 @@ public class PlayerScript : MonoBehaviour {
 	public float impulse;
 
 	public Transform floorVerificator;
-
 	bool isOnFloor;
 
 	SpriteRenderer spriteRender;
@@ -51,23 +51,26 @@ public class PlayerScript : MonoBehaviour {
 		animator.SetBool ("pFire", Input.GetButton ("Jump"));
 	}
 
-	void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag == "EnemyGuy"){
-			yield return new WaitForSeconds(0.2f);
-   			Time.timeScale = 0.0f;
-			GameObject.Find("EndText").GetComponent<Text>().text = "You won!!!";
-			userHasWon = false;
+        if (col.tag == "Enemy")
+        {
+            bool isPowerUpSet = GameScript.Instance.userHasPowerUp;
+            if (isPowerUpSet)
+            {
+                Destroy(col.gameObject);
+            }
+            else
+            {
+                Time.timeScale = 0.0f;
+                GameObject.Find("EndText").GetComponent<Text>().text = "You lost!";
+            }
 
-			FinishGame();
-		}
-        
+        }
+        else if(col.tag == "Enemy")
+        {
+            GameScript.Instance.userHasPowerUp = true;
+        }
     }
-
-	void FinishGame(){
-		Time.deltaTime
-	}
-
-
 
 }
